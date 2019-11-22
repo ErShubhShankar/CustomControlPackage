@@ -11,7 +11,7 @@ import Foundation
 import CoreGraphics
 import QuartzCore
 
-class DVPageControl: PageControlBase {
+open class DVPageControl: PageControlBase {
     @IBInspectable open var elementWidth: CGFloat = 20 {
         didSet {
             setNeedsLayout()
