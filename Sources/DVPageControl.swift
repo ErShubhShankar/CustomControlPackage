@@ -12,12 +12,12 @@ import CoreGraphics
 import QuartzCore
 
 class DVPageControl: PageControlBase {
-    @IBInspectable var elementWidth: CGFloat = 20 {
+    @IBInspectable open var elementWidth: CGFloat = 20 {
         didSet {
             setNeedsLayout()
         }
     }
-    @IBInspectable var elementHeight: CGFloat = 6 {
+    @IBInspectable open var elementHeight: CGFloat = 6 {
         didSet {
             setNeedsLayout()
         }
@@ -94,11 +94,11 @@ class DVPageControl: PageControlBase {
         }
     }
 }
-protocol DVPageControllable: class {
-    var numberOfPages: Int { get set }
-    var currentPage: Int { get }
-    var progress: Double { get set }
-    var hidesForSinglePage: Bool { get set }
-    var borderWidth: CGFloat { get set }
-    func set(progress: Int, animated: Bool)
+open protocol DVPageControllable: class {
+    open var numberOfPages: Int { get set }
+    open var currentPage: Int { get }
+    open var progress: Double { get set }
+    open var hidesForSinglePage: Bool { get set }
+    open var borderWidth: CGFloat { get set }
+    open func set(progress: Int, animated: Bool)
 }
