@@ -31,7 +31,7 @@ open class DVPageControl: PageControlBase {
     public override init(frame: CGRect) {
         super.init(frame: frame)
     }
-    override func updateNumberOfPages(_ count: Int) {
+    override open func updateNumberOfPages(_ count: Int) {
         inactive.forEach { $0.removeFromSuperlayer() }
         inactive = [CHILayer]()
         inactive = (0..<count).map {_ in
@@ -67,7 +67,7 @@ open class DVPageControl: PageControlBase {
         update(for: progress)
     }
 
-    override func update(for progress: Double) {
+    override open func update(for progress: Double) {
         guard let min = inactive.first?.frame,
               let max = inactive.last?.frame,
               progress >= 0 && progress <= Double(numberOfPages - 1),
@@ -94,11 +94,11 @@ open class DVPageControl: PageControlBase {
         }
     }
 }
-open protocol DVPageControllable: class {
-    open var numberOfPages: Int { get set }
-    open var currentPage: Int { get }
-    open var progress: Double { get set }
-    open var hidesForSinglePage: Bool { get set }
-    open var borderWidth: CGFloat { get set }
-    open func set(progress: Int, animated: Bool)
+public protocol DVPageControllable: class {
+   var numberOfPages: Int { get set }
+   var currentPage: Int { get }
+   var progress: Double { get set }
+   var hidesForSinglePage: Bool { get set }
+   var borderWidth: CGFloat { get set }
+   func set(progress: Int, animated: Bool)
 }

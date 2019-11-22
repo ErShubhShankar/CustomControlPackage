@@ -53,7 +53,7 @@ import UIKit
             setNeedsLayout()
         }
     }
-    override open open var tintColor: UIColor! {
+    override open var tintColor: UIColor! {
         didSet {
             setNeedsLayout()
         }
