@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import CustomControlPackage
 
 @IBDesignable open class PageControlBase: UIControl, DVPageControllable {
     open weak var delegate: DVPageControlBaseDelegate?
