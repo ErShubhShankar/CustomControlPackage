@@ -8,61 +8,61 @@
 
 import UIKit
 
-protocol QuantityControlDelegate: class {
+public protocol QuantityControlDelegate: class {
     func quantityControll(_ quantityControll: QuantityControl, didChange value: Int, with btnTag: Int)
 }
 
 @IBDesignable
-  class QuantityControl: UIView {
-    @IBInspectable private var minimumQuantity: Int = 1 {
+  public class QuantityControl: UIView {
+    @IBInspectable public var minimumQuantity: Int = 1 {
         didSet {
             loadView()
         }
     }
-    @IBInspectable private var maximumQuantity: Int = 10 {
+    @IBInspectable public var maximumQuantity: Int = 10 {
         didSet {
             loadView()
         }
     }
-    @IBInspectable  var minusImage: UIImage? = UIImage(named: "quantityMinus") {
+    @IBInspectable public var minusImage: UIImage? = UIImage(named: "quantityMinus") {
         didSet {
             loadView()
         }
     }
-    @IBInspectable  var plusImage: UIImage? = UIImage(named: "quantityPlus") {
+    @IBInspectable public var plusImage: UIImage? = UIImage(named: "quantityPlus") {
         didSet {
             loadView()
         }
     }
-    @IBInspectable  var btnSize: CGFloat = 30 {
+    @IBInspectable public var btnSize: CGFloat = 30 {
         didSet {
             loadView()
         }
     }
-    @IBInspectable  var displayExtraLabel: Bool = true {
+    @IBInspectable public var displayExtraLabel: Bool = true {
         didSet {
             loadView()
         }
     }
-    @IBInspectable  var extraText: String = "" {
+    @IBInspectable public var extraText: String = "" {
         didSet {
             loadView()
         }
     }
-    @IBInspectable  var cornerRadius: CGFloat = 0 {
+    @IBInspectable public var cornerRadius: CGFloat = 0 {
         didSet {
             layer.cornerRadius = cornerRadius
         }
     }
-    weak var delegate: QuantityControlDelegate?
-    var font: UIFont = UIFont(name: "Cochin", size: 35)!
-    var disableFont: UIFont = UIFont(name: "Cochin", size: 35)!
-    var color: UIColor = .black
-    var labelQuantity = UILabel()
-    var buttonMinus = UIButton()
-    var buttonPlus = UIButton()
-    var extraLabel = UILabel()
-    var lblQuantityText: String! {
+    public weak var delegate: QuantityControlDelegate?
+    public var font: UIFont = UIFont(name: "Cochin", size: 35)!
+    public var disableFont: UIFont = UIFont(name: "Cochin", size: 35)!
+    public var color: UIColor = .black
+    public var labelQuantity = UILabel()
+    public var buttonMinus = UIButton()
+    public var buttonPlus = UIButton()
+    public var extraLabel = UILabel()
+    public var lblQuantityText: String! {
         get {
             return labelQuantity.text
         }
@@ -80,7 +80,7 @@ protocol QuantityControlDelegate: class {
         }
         return minimumQuantity...maximumQuantity
     }
-     var value: Int {
+    public var value: Int {
         get {
             return Int(labelQuantity.text ?? "") ?? minimumQuantity
         }
@@ -90,11 +90,11 @@ protocol QuantityControlDelegate: class {
             }
         }
     }
-    required  init?(coder aDecoder: NSCoder) {
+    required public init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         self.loadView()
     }
-    override init(frame: CGRect) {
+    override public init(frame: CGRect) {
         super.init(frame: frame)
         self.loadView()
     }
@@ -154,7 +154,7 @@ protocol QuantityControlDelegate: class {
             buttonMinus.setTitleColor(labelQuantity.textColor, for: .normal)
         }
     }
-    @discardableResult func setMinMaxQuantity(minLimit: Int, maxLimit: Int) -> Bool {
+    @discardableResult public func setMinMaxQuantity(minLimit: Int, maxLimit: Int) -> Bool {
         if minLimit > maxLimit {
             return false
         } else {
@@ -163,7 +163,7 @@ protocol QuantityControlDelegate: class {
             return true
         }
     }
-    func setDisable(disableColor: UIColor) {
+    public func setDisable(disableColor: UIColor) {
         labelQuantity.font = disableFont
         buttonPlus.titleLabel?.font = disableFont
         buttonMinus.titleLabel?.font = disableFont
@@ -171,7 +171,7 @@ protocol QuantityControlDelegate: class {
         buttonPlus.setTitleColor(disableColor, for: .normal)
         buttonMinus.setTitleColor(disableColor, for: .normal)
     }
-    func setEnable(disableColor: UIColor) {
+    public func setEnable(disableColor: UIColor) {
         labelQuantity.font = font
         buttonPlus.titleLabel?.font = font
         buttonMinus.titleLabel?.font = font
