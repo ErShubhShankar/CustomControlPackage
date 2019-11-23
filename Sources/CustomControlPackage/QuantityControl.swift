@@ -115,18 +115,19 @@ protocol QuantityControlDelegate: class {
             stackForLabels.alignment = .fill
             stackForLabels.distribution = .fillEqually
             stackForLabels.frame = CGRect(x: stackViewX, y: 0, width: lblQuantityWidth, height: lblQuantityHeight)
-            stackForLabels.addArrangedSubview(extraLabel)
+            if displayExtraLabel {
+                stackForLabels.addArrangedSubview(extraLabel)
+                extraLabel.font = font
+                extraLabel.text = extraText
+                extraLabel.textAlignment = .center
+            }
             stackForLabels.insertArrangedSubview(labelQuantity, at: 0)
             addSubview(stackForLabels)
         }
         labelQuantity.textAlignment = .center
         labelQuantity.font = font
         labelQuantity.textColor = color
-        if displayExtraLabel {
-            extraLabel.font = font
-            extraLabel.text = extraText
-            extraLabel.textAlignment = .center
-        }
+
         addSubview(buttonMinus)
         addSubview(buttonPlus)
         value = minimumQuantity
