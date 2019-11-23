@@ -12,8 +12,7 @@ public protocol QuantityControlDelegate: class {
     func quantityControll(_ quantityControll: QuantityControl, didChange value: Int, with btnTag: Int)
 }
 
-@IBDesignable
-  public class QuantityControl: UIView {
+@IBDesignable public class QuantityControl: UIView {
     @IBInspectable public var minimumQuantity: Int = 1 {
         didSet {
             loadView()
